@@ -1,4 +1,4 @@
-package com.cfa.univeristy.Domain;
+package com.cfa.univeristy.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

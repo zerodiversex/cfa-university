@@ -1,6 +1,5 @@
 package com.cfa.univeristy.models;
 
-import com.cfa.univeristy.Domain.DepartmentDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

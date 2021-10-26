@@ -1,4 +1,4 @@
-package com.cfa.univeristy.Domain;
+package com.cfa.univeristy.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
