@@ -1,10 +1,10 @@
-package com.cfa.univeristy.Domain;
+package com.cfa.univeristy.models;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("Test Student Class")
 class StudentTest {
@@ -14,7 +14,7 @@ class StudentTest {
     @CsvSource({"Tran,Toan,Tran.Toan", "Messi,Lionel,Messi.Lionel", "Baba,Yaga,Baba.Yaga", "'','',."})
     public void shouldReturnFullName(String firstName, String lastName, String expected) {
         //Given
-        StudentDto student = new StudentDto(firstName, lastName, 26);
+        Student student = new Student(1L, firstName, lastName, 26);
         //When
         String fullName = student.getFullName();
         //Then
