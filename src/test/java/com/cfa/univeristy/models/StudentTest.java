@@ -1,4 +1,8 @@
+<<<<<<< HEAD:src/test/java/com/cfa/univeristy/models/StudentTest.java
 package com.cfa.univeristy.models;
+=======
+package com.cfa.univeristy.domain;
+>>>>>>> db7f3b439d7644df4b07b92a35379af1159ef0e4:src/test/java/com/cfa/univeristy/domain/StudentTest.java
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
