@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/test/java/com/cfa/univeristy/models/UniversityTest.java
 package com.cfa.univeristy.models;
-=======
-package com.cfa.univeristy.domain;
->>>>>>> db7f3b439d7644df4b07b92a35379af1159ef0e4:src/test/java/com/cfa/univeristy/domain/UniversityTest.java
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,18 +18,18 @@ public class UniversityTest {
     @ValueSource(ints = {18, 19, 20, 21})
     public void shouldReturnStudentFullNamesWithAgeGreaterAgeParams(int age) {
         //Given
-        Student stud1 = new Student(1L, "T", "Q", 23);
-        Department dept1 = new Department(1L, "Paris", List.of(stud1));
+        Student stud1 = Student.builder().firstName("T").lastName("Q").age(23).build();
+        Department dept1 = Department.builder().students(List.of(stud1)).build();
 
-        Student stud2 = new Student(1L, "Tran", "Toan", 22);
-        Department dept2 = new Department(1L, "Lille", List.of(stud2));
+        Student stud2 = Student.builder().firstName("Toan").lastName("Tran").age(23).build();
+        Department dept2 = Department.builder().students(List.of(stud2)).build();
 
         University university = new University(1L, "CFA Insta", List.of(dept1, dept2));
 
         //When
         List<String> studentFullNames = university.getAllStudentFullNamesByAge(age);
         //Then
-        assertThat(studentFullNames).containsExactly("T.Q", "Tran.Toan");
+        assertThat(studentFullNames).containsExactly("T.Q", "Toan.Tran");
     }
 
     @DisplayName("Test getAllStudentByPredicate() Age is greater then 22, expected OK")
@@ -43,18 +39,18 @@ public class UniversityTest {
         //Given
         Predicate<Student> studentPredicate = stud -> stud.getAge() >= 22;
 
-        Student stud1 = new Student(1L, "T", "Q", age);
-        Department dept1 = new Department(1L, "Paris", List.of(stud1));
+        Student stud1 = Student.builder().firstName("T").lastName("Q").age(age).build();
+        Department dept1 = Department.builder().students(List.of(stud1)).build();
 
-        Student stud2 = new Student(1L, "Tran", "Toan", age);
-        Department dept2 = new Department(1L, "Lille", List.of(stud2));
+        Student stud2 = Student.builder().firstName("Toan").lastName("Tran").age(age).build();
+        Department dept2 = Department.builder().students(List.of(stud2)).build();
 
         University university = new University(1L, "CFA Insta", List.of(dept1, dept2));
 
         //When
         List<String> studentFullNames = university.getAllStudentByPredicate(studentPredicate);
         //Then
-        assertThat(studentFullNames).containsExactly("T.Q", "Tran.Toan");
+        assertThat(studentFullNames).containsExactly("T.Q", "Toan.Tran");
     }
 
     @DisplayName("Test getAllStudentByPredicate() Age is smaller than 18, expected OK")
@@ -63,11 +59,11 @@ public class UniversityTest {
         //Given
         Predicate<Student> studentPredicate = stud -> stud.getAge() <= 18;
 
-        Student stud1 = new Student(1L, "T", "Q", 18);
-        Department dept1 = new Department(1L, "Paris", List.of(stud1));
+        Student stud1 = Student.builder().firstName("T").lastName("Q").age(18).build();
+        Department dept1 = Department.builder().students(List.of(stud1)).build();
 
-        Student stud2 = new Student(1L, "Tran", "Toan", 22);
-        Department dept2 = new Department(1L, "Lille", List.of(stud2));
+        Student stud2 = Student.builder().firstName("Toan").lastName("Tran").age(22).build();
+        Department dept2 = Department.builder().students(List.of(stud2)).build();
 
         University university = new University(1L, "CFA Insta", List.of(dept1, dept2));
 
@@ -76,4 +72,5 @@ public class UniversityTest {
         //Then
         assertThat(studentFullNames).containsExactly("T.Q");
     }
+
 }

@@ -24,13 +24,17 @@ public class StudentRepositoryTest {
     @Test
     public void testFindByName_WillReturnTheExactResult() {
 
-        entityManager.persist(new Student(1L, "Toan","Tran", 26));
-        entityManager.persist(new Student(2L, "Quan", "Nguyen", 24));
-        entityManager.persist(new Student(3L, "Trung", "Bui", 24));
+        Student student1 = Student.builder().firstName("Toan").lastName("Tran").age(26).build();
+        Student student2 = Student.builder().firstName("Quan").lastName("Nguyen").age(24).build();
+        Student student3 = Student.builder().firstName("Trung").lastName("Bui").age(24).build();
 
-        var students = studentRepository.findAll();
+        studentRepository.save(student1);
+        studentRepository.save(student2);
+        studentRepository.save(student3);
 
-        assertThat(students.size()).isEqualTo(3);
+        var students = studentRepository.findStudentByFirstName("Toan");
+
+        assertThat(students.size()).isEqualTo(1);
 
     }
 }

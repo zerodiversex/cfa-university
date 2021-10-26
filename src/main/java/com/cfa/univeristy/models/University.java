@@ -1,10 +1,9 @@
 package com.cfa.univeristy.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -13,6 +12,7 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class University {
 
     @Id
@@ -21,8 +21,8 @@ public class University {
 
     private String name;
 
-    @OneToMany
-    private List<Department> departments;
+    @OneToMany(mappedBy = "university")
+    private List<Department> departments = new ArrayList<>();
 
     @Transient
     public List<String> getAllStudentFullNamesByAge(int age) {
