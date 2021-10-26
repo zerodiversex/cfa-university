@@ -1,4 +1,4 @@
-package Domain;
+package com.cfa.univeristy.Domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,13 +17,13 @@ public class UniversityTest {
     @ValueSource(ints = {18, 19, 20, 21})
     public void shouldReturnStudentFullNamesWithAgeGreaterAgeParams(int age) {
         //Given
-        Student stud1 = new Student("T","Q",23);
-        Department dept1 = new Department("Paris",List.of(stud1));
+        StudentDto stud1 = new StudentDto("T","Q",23);
+        DepartmentDto dept1 = new DepartmentDto("Paris",List.of(stud1));
 
-        Student stud2 = new Student("Tran","Toan",22);
-        Department dept2 = new Department("Lille",List.of(stud2));
+        StudentDto stud2 = new StudentDto("Tran","Toan",22);
+        DepartmentDto dept2 = new DepartmentDto("Lille",List.of(stud2));
 
-        University university = new University("CFA Insta", List.of(dept1, dept2));
+        UniversityDto university = new UniversityDto("CFA Insta", List.of(dept1, dept2));
 
         //When
         List<String> studentFullNames = university.getAllStudentFullNamesByAge(age);
@@ -36,15 +36,15 @@ public class UniversityTest {
     @ValueSource(ints = {22, 23, 24, 25})
     public void shouldReturnStudentFullNamesWithPredicateAgeGreater22(int age) {
         //Given
-        Predicate<Student> studentPredicate = stud -> stud.getAge() >= 22;
+        Predicate<StudentDto> studentPredicate = stud -> stud.getAge() >= 22;
 
-        Student stud1 = new Student("T","Q",age);
-        Department dept1 = new Department("Paris",List.of(stud1));
+        StudentDto stud1 = new StudentDto("T","Q",age);
+        DepartmentDto dept1 = new DepartmentDto("Paris",List.of(stud1));
 
-        Student stud2 = new Student("Tran","Toan",age);
-        Department dept2 = new Department("Lille",List.of(stud2));
+        StudentDto stud2 = new StudentDto("Tran","Toan",age);
+        DepartmentDto dept2 = new DepartmentDto("Lille",List.of(stud2));
 
-        University university = new University("CFA Insta", List.of(dept1, dept2));
+        UniversityDto university = new UniversityDto("CFA Insta", List.of(dept1, dept2));
 
         //When
         List<String> studentFullNames = university.getAllStudentByPredicate(studentPredicate);
@@ -56,15 +56,15 @@ public class UniversityTest {
     @Test
     public void shouldReturnStudentFullNamesWithPredicateAgeSmaller18() {
         //Given
-        Predicate<Student> studentPredicate = stud -> stud.getAge() <= 18;
+        Predicate<StudentDto> studentPredicate = stud -> stud.getAge() <= 18;
 
-        Student stud1 = new Student("T","Q",18);
-        Department dept1 = new Department("Paris",List.of(stud1));
+        StudentDto stud1 = new StudentDto("T","Q",18);
+        DepartmentDto dept1 = new DepartmentDto("Paris",List.of(stud1));
 
-        Student stud2 = new Student("Tran","Toan",22);
-        Department dept2 = new Department("Lille",List.of(stud2));
+        StudentDto stud2 = new StudentDto("Tran","Toan",22);
+        DepartmentDto dept2 = new DepartmentDto("Lille",List.of(stud2));
 
-        University university = new University("CFA Insta", List.of(dept1, dept2));
+        UniversityDto university = new UniversityDto("CFA Insta", List.of(dept1, dept2));
 
         //When
         List<String> studentFullNames = university.getAllStudentByPredicate(studentPredicate);
