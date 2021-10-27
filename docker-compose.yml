@@ -4,10 +4,12 @@ services:
         image: postgres:latest
         network_mode: bridge
         container_name: postgres
+        volumes:
+          - ./init.sql:/data/application/init.sql
         expose:
             - 5432
         ports:
-              - 5432:5432
+              - "5432:5432"
         environment:
               - POSTGRES_PASSWORD=admin
               - POSTGRES_USER=postgres

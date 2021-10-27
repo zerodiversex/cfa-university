@@ -3,11 +3,11 @@ spring:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
   datasource:
-    url: jdbc:postgresql://localhost:5432/testdb
-    username: postgres
-    password: admin
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_ADMIN}
     driverClassName: org.postgresql.Driver
   sql:
     init:
